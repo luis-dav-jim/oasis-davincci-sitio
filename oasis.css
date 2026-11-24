@@ -83,11 +83,11 @@
 
 @media (max-width: 759px) {
   .pizarron { --tn: 48px; }
-  .lienzo { height: 470px; }
+  .lienzo { height: 496px; }
   .n { min-width: 88px; padding: 12px 6px 4px; }
   .n .agentito { margin-bottom: 9px; }
   .n-lid { --tn: 56px; }
-  .n-orq { --x: 50%; --y: 15%; }
+  .n-orq { --x: 50%; --y: 20%; }
   .n-lid { --x: 50%; --y: 44%; }
   .n-cod { --x: 17%; --y: 76%; }
   .n-dis { --x: 50%; --y: 82%; }
@@ -222,7 +222,7 @@
 .bus-lista { display: flex; flex-wrap: wrap; gap: var(--e-2); padding: var(--e-3) var(--e-4); border-bottom: 1px solid var(--linea); }
 .bus-lista button { min-height: 44px; padding: 0 var(--e-3); border-radius: var(--r-1); background: none; border: 1px solid var(--linea-fuerte); color: var(--texto-2); transition: color var(--dur-1), border-color var(--dur-1), background-color var(--dur-1); }
 .bus-lista button:hover { color: var(--texto); border-color: var(--linea-control); }
-.bus-lista button[aria-pressed="true"] { color: var(--fondo); background: var(--crema); border-color: var(--crema); }
+.bus-lista button[aria-pressed="true"] { color: var(--crema); background: var(--sup-2); border-color: var(--linea-fuerte); box-shadow: inset 0 -2px 0 var(--firma); }
 .bus-salida { padding: var(--e-4); display: grid; gap: var(--e-3); min-height: 236px; align-content: start; }
 .bus-salida pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--texto); font-size: .8125rem; line-height: 1.6; }
 

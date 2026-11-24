@@ -71,31 +71,31 @@
         <div class="lienzo lienzo-crema" data-lienzo>
           <svg class="lineas" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
             <g class="respaldo ancho"><path d="M12 50 36 50M36 50 68 19M36 50 82 50M36 50 68 81"/></g>
-            <g class="respaldo angosto"><path d="M50 13 50 42M50 42 18 77M50 42 50 82M50 42 82 77"/></g>
+            <g class="respaldo angosto"><path d="M50 18 50 42M50 42 18 77M50 42 50 82M50 42 82 77"/></g>
             <g data-hilos></g>
           </svg>
-          <button type="button" class="n n-orq" data-id="orq" data-nombre="Orquestador">
+          <button type="button" class="n n-orq" aria-describedby="pista-pizarron" data-id="orq" data-nombre="Orquestador">
             <span class="agentito" data-rol="general" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
             <span class="n-nombre">Orquestador</span><span class="n-estado" data-estado>en reposo</span>
           </button>
-          <button type="button" class="n n-lid" data-id="lid" data-nombre="Líder">
+          <button type="button" class="n n-lid" aria-describedby="pista-pizarron" data-id="lid" data-nombre="Líder">
             <span class="agentito jefe" data-rol="lider" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbita"><i></i><i></i><i></i></span><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
             <span class="n-nombre">Líder</span><span class="n-estado" data-estado>coordina a 3</span>
           </button>
-          <button type="button" class="n n-cod" data-id="cod" data-nombre="Código">
+          <button type="button" class="n n-cod" aria-describedby="pista-pizarron" data-id="cod" data-nombre="Código">
             <span class="agentito" data-rol="codigo" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
             <span class="n-nombre">Código</span><span class="n-estado" data-estado>en reposo</span>
           </button>
-          <button type="button" class="n n-dis" data-id="dis" data-nombre="Diseño">
+          <button type="button" class="n n-dis" aria-describedby="pista-pizarron" data-id="dis" data-nombre="Diseño">
             <span class="agentito" data-rol="diseno" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
             <span class="n-nombre">Diseño</span><span class="n-estado" data-estado>en reposo</span>
           </button>
-          <button type="button" class="n n-rev" data-id="rev" data-nombre="Revisión">
+          <button type="button" class="n n-rev" aria-describedby="pista-pizarron" data-id="rev" data-nombre="Revisión">
             <span class="agentito" data-rol="revision" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
             <span class="n-nombre">Revisión</span><span class="n-estado" data-estado>en reposo</span>
           </button>
 
-          <p class="pista cuerpo-s" data-pista>Arrastra una bolita. Toca dos para trazar un canal entre ellas.</p>
+          <p class="pista cuerpo-s" id="pista-pizarron" data-pista>Arrastra una bolita o enfócala y muévela con las flechas. Toca dos para trazar un canal.</p>
         </div>
 
         <div class="decision" data-decision data-pide="no" aria-live="polite">

@@ -2,10 +2,10 @@
   --t: 68px;
   --ag-negro: #0c0c0c;
   --ag-ojo: #f4f4f4;
-  --ag-filo: rgba(255, 255, 255, 0.16);
+  --ag-filo: rgba(255, 255, 255, 0.28);
   --ag-trazo: color-mix(in srgb, currentColor 46%, transparent);
   --ag-aviso: #c4932f;
-  --ag-peligro: #d9826f;
+  --ag-peligro: #ee8573;
   --ag-abre: 1;
   position: relative;
   display: inline-block;
@@ -14,17 +14,21 @@
   height: var(--t);
   vertical-align: middle;
 }
+
+.ag-t24 { --t: 24px; } .ag-t28 { --t: 28px; } .ag-t30 { --t: 30px; } .ag-t32 { --t: 32px; } .ag-t36 { --t: 36px; } .ag-t40 { --t: 40px; } .ag-t44 { --t: 44px; } .ag-t46 { --t: 46px; } .ag-t48 { --t: 48px; } .ag-t56 { --t: 56px; } .ag-t64 { --t: 64px; } .ag-t68 { --t: 68px; } .ag-t72 { --t: 72px; } .ag-t84 { --t: 84px; } .ag-t96 { --t: 96px; } .ag-t128 { --t: 128px; } .ag-t190 { --t: 190px; }
+
+.ag-lienzo .agentito { --ag-filo: transparent; }
 .ag-orbe {
   position: absolute;
   inset: 0;
   border-radius: var(--ag-forma, 50%);
   background: var(--ag-negro);
-  box-shadow: 0 0 0 1px var(--ag-filo);
+  outline: 1px solid var(--ag-filo);
 }
 .ag-anillo {
   position: absolute;
   inset: calc(var(--t) * -0.075);
-  border: max(1px, calc(var(--t) * 0.022)) solid transparent;
+  border: 1px solid transparent;
   border-radius: var(--ag-forma-anillo, 50%);
 }
 .ag-cara { position: absolute; inset: 0; display: grid; place-items: center; }
@@ -48,6 +52,8 @@
 
 .agentito[data-rol='lider'] { --ag-abre: 0.62; }
 .ag-orbita { position: absolute; inset: calc(var(--t) * -0.17); border: 1px solid var(--ag-trazo); border-radius: 50%; }
+.ag-n1 { --n: 1; } .ag-n2 { --n: 2; } .ag-n3 { --n: 3; } .ag-n4 { --n: 4; } .ag-n5 { --n: 5; } .ag-n6 { --n: 6; } .ag-n7 { --n: 7; } .ag-n8 { --n: 8; }
+.ag-orbita i:nth-child(1) { --i: 0; } .ag-orbita i:nth-child(2) { --i: 1; } .ag-orbita i:nth-child(3) { --i: 2; } .ag-orbita i:nth-child(4) { --i: 3; } .ag-orbita i:nth-child(5) { --i: 4; } .ag-orbita i:nth-child(6) { --i: 5; } .ag-orbita i:nth-child(7) { --i: 6; } .ag-orbita i:nth-child(8) { --i: 7; }
 .ag-orbita i {
   --p: max(3px, calc(var(--t) * 0.075));
   position: absolute; left: 50%; top: 50%; width: var(--p); height: var(--p); margin: calc(var(--p) / -2);
@@ -97,6 +103,9 @@
 
 .agentito[data-rol='redactor'] .ag-mirada { gap: calc(var(--t) * 0.06); transform: translateY(-10%); }
 .agentito[data-rol='redactor'] .ag-ojo { width: calc(var(--t) * 0.13); height: calc(var(--t) * 0.13); }
+
+.agentito[data-rol='vigia'] { --ag-abre: 1; }
+.agentito[data-rol='vigia'] .ag-ojo { width: calc(var(--t) * 0.1); height: calc(var(--t) * 0.27); }
 .agentito[data-rol='redactor'] .ag-parpado { border-radius: 50% 50% 50% 0; }
 
 .agentito[data-animo='reposo']:is([data-rol='general'], :not([data-rol])) { --ag-abre: 0.84; }
@@ -111,11 +120,11 @@
 .agentito[data-animo='dormido'] .ag-parpado { opacity: 0.55; transform: scaleY(0.12); }
 
 .agentito:is([data-animo='error'], [data-animo='terminado']) .ag-mirada { align-items: center; gap: calc(var(--t) * 0.1); transform: none; }
-.agentito:is([data-animo='error'], [data-animo='terminado']) .ag-ojo { display: block; width: calc(var(--t) * 0.18); height: calc(var(--t) * 0.18); overflow: visible; }
-.agentito:is([data-animo='error'], [data-animo='terminado']) .ag-parpado { border-radius: 0; -webkit-mask: none; mask: none; transform: none; opacity: 1; }
-.agentito[data-animo='error'] .ag-parpado { clip-path: polygon(14% 0, 50% 36%, 86% 0, 100% 14%, 64% 50%, 100% 86%, 86% 100%, 50% 64%, 14% 100%, 0 86%, 36% 50%, 0 14%); }
+.agentito:is([data-animo='error'], [data-animo='terminado']) :is(.ag-ojo, .ag-ojo + .ag-ojo) { display: block; width: calc(var(--t) * 0.18); height: calc(var(--t) * 0.18); overflow: visible; }
+.agentito:is([data-animo='error'], [data-animo='terminado']) :is(.ag-ojo, .ag-ojo + .ag-ojo) .ag-parpado { border-radius: 0; -webkit-mask: none; mask: none; transform: none; opacity: 1; }
+.agentito[data-animo='error'] :is(.ag-ojo, .ag-ojo + .ag-ojo) .ag-parpado { clip-path: polygon(14% 0, 50% 36%, 86% 0, 100% 14%, 64% 50%, 100% 86%, 86% 100%, 50% 64%, 14% 100%, 0 86%, 36% 50%, 0 14%); }
 .agentito[data-animo='error'] .ag-anillo { border-color: var(--ag-peligro); }
-.agentito[data-animo='terminado'] .ag-parpado { clip-path: polygon(50% 16%, 100% 66%, 86% 80%, 50% 44%, 14% 80%, 0 66%); }
+.agentito[data-animo='terminado'] :is(.ag-ojo, .ag-ojo + .ag-ojo) .ag-parpado { clip-path: polygon(50% 16%, 100% 66%, 86% 80%, 50% 44%, 14% 80%, 0 66%); }
 .agentito[data-animo='terminado'] .ag-mirada { transform: translateY(-6%); }
 .agentito[data-animo='terminado'] .ag-anillo { border-color: color-mix(in srgb, currentColor 30%, transparent); }
 

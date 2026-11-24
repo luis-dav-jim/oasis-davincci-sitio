@@ -3,7 +3,7 @@
   const OJOS = '<span class="ag-ojo"><i class="ag-parpado"></i></span>';
   const NOMBRE_ROL = {
     general: 'general', lider: 'líder', planificador: 'planificador', codigo: 'código', revision: 'revisión', verificador: 'verificador',
-    investigacion: 'investigación', render: 'render', infra: 'infraestructura', diseno: 'diseño', datos: 'datos', redactor: 'redactor',
+    investigacion: 'investigación', render: 'render', infra: 'infraestructura', diseno: 'diseño', datos: 'datos', redactor: 'redactor', vigia: 'vigía',
   };
   const NOMBRE_ANIMO = {
     reposo: 'en reposo', pensando: 'pensando', trabajando: 'trabajando', esperando: 'esperando una decisión', error: 'con un error',
@@ -11,9 +11,9 @@
   };
 
   function marcado({ rol = 'general', animo = 'reposo', tam = 68, equipo = 4, mira = '', decorativo = false } = {}) {
-    const orbita = rol === 'lider' ? `<span class="ag-orbita" style="--n:${equipo}">${Array.from({ length: equipo }, (_, i) => `<i style="--i:${i}"></i>`).join('')}</span>` : '';
+    const orbita = rol === 'lider' ? `<span class="ag-orbita ag-n${equipo}">${'<i></i>'.repeat(equipo)}</span>` : '';
     const voz = decorativo ? 'aria-hidden="true"' : `role="img" aria-label="Agentito de ${NOMBRE_ROL[rol] ?? rol}, ${NOMBRE_ANIMO[animo] ?? animo}"`;
-    return `<span class="agentito" data-rol="${rol}" data-animo="${animo}"${tam <= 28 ? ' data-chico' : ''}${mira ? ` data-mira="${mira}"` : ''} style="--t:${tam}px" ${voz}>` +
+    return `<span class="agentito ag-t${tam}" data-rol="${rol}" data-animo="${animo}"${tam <= 28 ? ' data-chico' : ''}${mira ? ` data-mira="${mira}"` : ''} ${voz}>` +
       `${orbita}<span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada">${OJOS}${OJOS}</span></span></span>`;
   }
 

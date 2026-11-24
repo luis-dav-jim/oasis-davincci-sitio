@@ -213,18 +213,6 @@ main { position: relative; }
 .cierre .display-2 { max-width: 18ch; }
 .cierre .entrada { margin-top: var(--e-5); }
 .cierre .botones { margin-top: var(--e-6); display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3) var(--e-4); }
-.pie { background: var(--fondo-hundido); border-top: 1px solid var(--linea); padding: var(--e-7) 0 var(--e-7); }
-.pie .cont { display: grid; gap: var(--e-6); }
-.pie-marca { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3) var(--e-4); }
-.pie-marca a { display: inline-flex; align-items: center; min-height: 44px; }
-.pie-marca img { height: 28px; width: auto; }
-.pie-familia { display: flex; flex-wrap: wrap; gap: 0 var(--e-5); }
-.pie-familia a, .pie-familia span { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 500; }
-.pie-familia a { color: var(--texto-2); transition: color var(--dur-1); }
-.pie-familia a:hover { color: var(--texto); }
-.pie-familia a[aria-current] { color: var(--texto); }
-.pie-familia span { color: var(--texto-3); }
-.pie-legal { display: grid; gap: var(--e-2); max-width: 72ch; }
 
 .mov .rv { opacity: 0; transform: translateY(16px); transition: opacity var(--dur-4) var(--salida), transform var(--dur-4) var(--salida); transition-delay: var(--d, 0ms); }
 .mov .rv.in { opacity: 1; transform: none; }
@@ -239,14 +227,30 @@ main { position: relative; }
 .ag-orbita { --n: 3; }
 .ag-orbita i:nth-child(1) { --i: 0; } .ag-orbita i:nth-child(2) { --i: 1; } .ag-orbita i:nth-child(3) { --i: 2; }
 
-.agentito:is([data-animo="error"], [data-animo="terminado"]) .ag-cara .ag-mirada .ag-ojo .ag-parpado { transform: none; border-radius: 0; opacity: 1; animation: none; -webkit-mask: none; mask: none; }
-.agentito[data-animo="terminado"] .ag-cara .ag-mirada .ag-ojo .ag-parpado { clip-path: polygon(50% 16%, 100% 66%, 86% 80%, 50% 44%, 14% 80%, 0 66%); }
-.agentito[data-animo="error"] .ag-cara .ag-mirada .ag-ojo .ag-parpado { clip-path: polygon(14% 0, 50% 36%, 86% 0, 100% 14%, 64% 50%, 100% 86%, 86% 100%, 50% 64%, 14% 100%, 0 86%, 36% 50%, 0 14%); }
-.agentito:is([data-animo="error"], [data-animo="terminado"]) .ag-cara .ag-mirada .ag-ojo { display: block; width: calc(var(--t) * .18); height: calc(var(--t) * .18); animation: none; transform: none; }
-.agentito:is([data-animo="error"], [data-animo="terminado"]) .ag-ojo::after { content: none; }
-
 .lienzo-crema .agentito { --ag-filo: transparent; --ag-aviso: var(--ocre); --ag-peligro: var(--sanguina); color: var(--fondo); }
 
 .menu-abierto { overflow: hidden; }
 .saltar { min-height: 44px; display: inline-flex; align-items: center; }
-.pie-familia a { min-width: 44px; }
+
+.error-pagina { display: grid; justify-items: start; align-content: center; gap: var(--e-3); min-height: 62svh; padding-top: var(--e-8); padding-bottom: var(--e-8); }
+.error-pagina .agentito { margin-bottom: var(--e-4); }
+.error-pagina .dato { color: var(--texto-3); }
+.error-pagina .cuerpo { color: var(--texto-2); }
+.enlace-flecha { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--enlace); font-weight: 500; }
+.enlace-flecha svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: transform var(--dur-1); }
+.enlace-flecha:hover svg { transform: translateX(3px); }
+
+.pie { background: var(--fondo-hundido); border-top: 1px solid var(--linea); padding: var(--e-7) 0; }
+.pie .cont { width: 100%; max-width: calc(var(--ancho) + 2 * var(--margen)); margin: 0 auto; padding: 0 var(--margen); display: grid; gap: var(--e-6); }
+.pie .cuerpo-s { font-size: .875rem; line-height: 1.5; color: var(--texto-2); }
+.pie .micro { margin: 0; font-size: .75rem; line-height: 1.4; font-weight: 500; color: var(--texto-3); }
+.pie-marca { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3) var(--e-4); }
+.pie-marca a { display: inline-flex; align-items: center; min-height: 44px; }
+.pie-marca img { height: 28px; width: auto; }
+.pie-familia { display: flex; flex-wrap: wrap; gap: 0 var(--e-5); }
+.pie-familia a, .pie-familia span { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 500; text-decoration: none; }
+.pie-familia a { min-width: 44px; color: var(--texto-2); transition: color var(--dur-1); }
+.pie-familia a:hover { color: var(--texto); }
+.pie-familia a[aria-current] { color: var(--texto); }
+.pie-familia span { color: var(--texto-3); }
+.pie-legal { display: grid; gap: var(--e-2); max-width: 72ch; }
