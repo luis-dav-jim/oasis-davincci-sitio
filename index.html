@@ -1,23 +1,423 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OASIS · Próximamente</title>
-<meta name="robots" content="noindex">
-<style>
-  :root { color-scheme: light dark; }
-  html,body { height:100%; margin:0; }
-  body { display:grid; place-items:center; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background:#0f1115; color:#e8e8ea; }
-  main { text-align:center; padding:16px; }
-  h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin:0 0 .4rem; letter-spacing:-.02em; }
-  p { margin:0; opacity:.7; }
-</style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>OASIS · El motor para orquestar agentes de IA</title>
+<meta name="description" content="OASIS es un pizarrón donde varias inteligencias artificiales trabajan juntas: terminales reales sobre un lienzo, unidas por líneas que son sus canales. Tú diriges.">
+<meta name="theme-color" content="#0A0C10">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="comun/marca/oasis/reflejo-favicon.svg" type="image/svg+xml">
+<link rel="preload" href="comun/fuentes/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="comun/fuentes/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="comun/agentitos.css">
+<link rel="stylesheet" href="comun/base.css">
+<link rel="stylesheet" href="oasis.css">
+<script src="comun/arranque.js"></script>
 </head>
 <body>
-<main>
-  <h1>OASIS</h1>
-  <p>Próximamente.</p>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="barra">
+  <div class="cont">
+    <a class="marca" href="#contenido" aria-label="DaVincci × OASIS, inicio">
+      <img src="comun/marca/lockup-oasis-color-oscuro.svg" alt="DaVincci × OASIS" width="179" height="28">
+    </a>
+    <nav class="barra-nav" aria-label="Secciones">
+      <a href="#pizarron">Pizarrón</a>
+      <a href="#equipo">Un encargo</a>
+      <a href="#elenco">Elenco</a>
+      <a href="#funciones">Funciones</a>
+    </nav>
+    <div class="barra-fin"><span class="etiqueta">Muy pronto</span></div>
+    <details class="menu">
+      <summary aria-label="Menú">
+        <svg class="tres" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14"/></svg>
+        <svg class="x" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </summary>
+      <nav class="menu-panel" aria-label="Secciones">
+        <a href="#pizarron">Pizarrón</a>
+        <a href="#equipo">Un encargo</a>
+        <a href="#elenco">Elenco</a>
+        <a href="#funciones">Funciones</a>
+        <p class="nota"><span class="etiqueta">Muy pronto</span></p>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="contenido">
+  <div class="recorrido" aria-hidden="true"><div><i></i><b></b></div></div>
+
+  <section class="tramo heroe" id="pizarron" aria-labelledby="t-heroe">
+    <div class="cont">
+      <div class="tramo-cab heroe-cab">
+        <p class="sobre"><span class="nodo" aria-hidden="true"><span class="agentito t24" data-rol="general" data-animo="reposo" data-chico aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span></span><span class="dato">Claude Code · Codex · Gemini · OpenCode</span></p>
+        <h1 class="display-1" id="t-heroe">El motor para orquestar agentes de IA.</h1>
+        <p class="entrada">Varias inteligencias artificiales trabajando juntas en un mismo lienzo. Cada una es una terminal real; las líneas que trazas entre ellas son sus canales. Tú diriges.</p>
+        <div class="heroe-botones">
+          <a class="btn primario l" href="#encargo" data-enfoca="#encargo">Encargar algo</a>
+          <a class="btn l" href="#equipo">Ver un encargo completo</a>
+        </div>
+      </div>
+
+      <div class="marco pizarron rv" id="demo" data-pausa data-pizarron>
+        <div class="marco-cab">
+          <span class="dato">Pizarrón de ejemplo<span class="solo-ancho"> · proyecto «Tienda»</span></span>
+          <span class="fin"><button type="button" class="btn fantasma m" data-reiniciar>Reiniciar</button></span>
+        </div>
+        <div class="lienzo lienzo-crema" data-lienzo>
+          <svg class="lineas" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <g class="respaldo ancho"><path d="M12 50 36 50M36 50 68 19M36 50 82 50M36 50 68 81"/></g>
+            <g class="respaldo angosto"><path d="M50 13 50 42M50 42 18 77M50 42 50 82M50 42 82 77"/></g>
+            <g data-hilos></g>
+          </svg>
+          <button type="button" class="n n-orq" data-id="orq" data-nombre="Orquestador">
+            <span class="agentito" data-rol="general" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
+            <span class="n-nombre">Orquestador</span><span class="n-estado" data-estado>en reposo</span>
+          </button>
+          <button type="button" class="n n-lid" data-id="lid" data-nombre="Líder">
+            <span class="agentito jefe" data-rol="lider" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbita"><i></i><i></i><i></i></span><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
+            <span class="n-nombre">Líder</span><span class="n-estado" data-estado>coordina a 3</span>
+          </button>
+          <button type="button" class="n n-cod" data-id="cod" data-nombre="Código">
+            <span class="agentito" data-rol="codigo" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
+            <span class="n-nombre">Código</span><span class="n-estado" data-estado>en reposo</span>
+          </button>
+          <button type="button" class="n n-dis" data-id="dis" data-nombre="Diseño">
+            <span class="agentito" data-rol="diseno" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
+            <span class="n-nombre">Diseño</span><span class="n-estado" data-estado>en reposo</span>
+          </button>
+          <button type="button" class="n n-rev" data-id="rev" data-nombre="Revisión">
+            <span class="agentito" data-rol="revision" data-animo="reposo" data-mira="puntero" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>
+            <span class="n-nombre">Revisión</span><span class="n-estado" data-estado>en reposo</span>
+          </button>
+
+          <p class="pista cuerpo-s" data-pista>Arrastra una bolita. Toca dos para trazar un canal entre ellas.</p>
+        </div>
+
+        <div class="decision" data-decision data-pide="no" aria-live="polite">
+          <p class="cuerpo-s decision-libre"><span class="punto hueco" aria-hidden="true"></span>Nadie espera tu decisión.</p>
+          <p class="cuerpo-s decision-pide"><span class="punto aviso" aria-hidden="true"></span><b>Revisión espera tu decisión.</b> <span data-pregunta>¿Publico la landing con el checkout nuevo?</span></p>
+          <div class="decision-botones decision-pide">
+            <button type="button" class="btn" data-responde="aprobar">Aprobar</button>
+            <button type="button" class="btn fantasma" data-responde="cambios">Pedir cambios</button>
+          </div>
+        </div>
+
+        <div class="encargo" data-encargo role="group" aria-label="Encargo de ejemplo">
+          <label class="solo-lector" for="encargo">Encargo para el orquestador</label>
+          <input id="encargo" name="encargo" type="text" autocomplete="off" maxlength="120" placeholder="Encárgale algo al orquestador" enterkeyhint="send">
+          <button type="button" class="btn" data-envia aria-label="Enviar el encargo">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"/></svg><span class="solo-ancho">Enviar</span>
+          </button>
+        </div>
+        <ol class="bitacora" data-bitacora aria-live="polite" aria-label="Lo último que pasó por el bus">
+          <li class="dato">Demostración: lo que escribes no sale de esta página.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="tramo escena" id="equipo" aria-labelledby="t-equipo">
+    <div class="cont">
+      <header class="tramo-cab">
+        <p class="sobre"><span class="nodo" aria-hidden="true"><span class="agentito t24" data-rol="lider" data-animo="reposo" data-chico aria-hidden="true"><span class="ag-orbita"><i></i><i></i><i></i></span><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span></span><span class="dato">Orquestador, líder y workers</span></p>
+        <h2 class="display-2" id="t-equipo">Un encargo, de principio a fin.</h2>
+      </header>
+    </div>
+    <div class="escena-alto" data-progreso="fijo:5" data-escena>
+      <div class="escena-fija">
+        <div class="cont escena-rejilla">
+          <div class="escena-arte" data-pausa aria-hidden="true">
+            <div class="lienzo-esc">
+              <svg class="lineas-esc" viewBox="0 0 500 400" focusable="false">
+                <path class="h h1" pathLength="1" d="M80 56L250 176"/>
+                <path class="h h2" pathLength="1" d="M250 176L90 288"/>
+                <path class="h h3" pathLength="1" d="M250 176L250 344"/>
+                <path class="h h4" pathLength="1" d="M250 176L410 288"/>
+                <path class="h bus" pathLength="1" d="M90 288L410 288"/>
+              </svg>
+              <div class="e e-orq"><span class="agentito" data-rol="general" data-animo="reposo" data-e="orq" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><span class="n-nombre">Orquestador</span></div>
+              <div class="e e-lid"><span class="agentito jefe" data-rol="lider" data-animo="terminado" data-e="lid" aria-hidden="true"><span class="ag-orbita"><i></i><i></i><i></i></span><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><span class="n-nombre">Líder</span></div>
+              <div class="e e-cod"><span class="agentito" data-rol="codigo" data-animo="terminado" data-e="cod" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><span class="n-nombre">Código</span></div>
+              <div class="e e-dis"><span class="agentito" data-rol="diseno" data-animo="terminado" data-e="dis" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><span class="n-nombre">Diseño</span></div>
+              <div class="e e-rev"><span class="agentito" data-rol="revision" data-animo="terminado" data-e="rev" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><span class="n-nombre">Revisión</span></div>
+              <span class="viajero"></span>
+              <div class="globo g-encargo"><span class="micro">Tú</span><p class="cuerpo-s">Saca la landing nueva y revisa el checkout.</p></div>
+              <div class="globo g-decision"><p class="cuerpo-s"><span class="punto aviso"></span><b>Revisión espera tu decisión.</b></p><p class="falsos"><span>Aprobar</span><span>Pedir cambios</span></p></div>
+              <div class="globo g-artefacto"><span class="micro">Artefacto · v3</span><p class="cuerpo-s">landing.html</p><span class="mini-pagina"><i></i><i></i><i></i></span></div>
+            </div>
+          </div>
+          <ol class="leyendas">
+            <li><span class="dato">1 de 5</span><h3 class="titulo-1">Lo pides en una frase.</h3><p class="cuerpo">Le escribes al orquestador como a una persona. También puedes dictarlo: la voz se transcribe en tu propia máquina.</p></li>
+            <li><span class="dato">2 de 5</span><h3 class="titulo-1">Él arma el equipo.</h3><p class="cuerpo">Decide qué proyectos toca, crea un worker por frente y le da a cada uno su carpeta, su modelo y su encargo. Un líder los coordina.</p></li>
+            <li><span class="dato">3 de 5</span><h3 class="titulo-1">Se hablan por las líneas.</h3><p class="cuerpo">Cada línea es un canal. Por ahí Código le avisa a Revisión que ya hay algo que leer, sin pasar por ti.</p></li>
+            <li><span class="dato">4 de 5</span><h3 class="titulo-1">A ti te llega lo que hay que decidir.</h3><p class="cuerpo">La Bandeja junta solo lo tuyo: una decisión pendiente o un turno terminado. La coordinación entre ellos no te interrumpe.</p></li>
+            <li><span class="dato">5 de 5</span><h3 class="titulo-1">Queda algo que se puede abrir.</h3><p class="cuerpo">El resultado se publica como artefacto, con sus versiones, y la tarea cierra su rama.</p></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tramo" id="elenco" aria-labelledby="t-elenco">
+    <div class="cont">
+      <header class="tramo-cab rv">
+        <p class="sobre"><span class="nodo" aria-hidden="true"><span class="agentito t24" data-rol="diseno" data-animo="reposo" data-chico aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span></span><span class="dato">12 roles, un rasgo cada uno</span></p>
+        <h2 class="display-2" id="t-elenco">Cada worker tiene cara.</h2>
+        <p class="entrada">Una bolita por worker. Los ojos dicen su rol y el anillo, su estado. Así reconoces a tu equipo de un vistazo, también a 24 px.</p>
+      </header>
+      <div class="elenco" data-pausa>
+        <div class="elenco-barra rv">
+          <div class="pestanas" role="group" aria-label="Estado de las bolitas" data-elige="animo" data-en="#elenco .elenco-lista" data-hijos=".agentito">
+            <button type="button" data-valor="trabajando" aria-pressed="true">Trabajando</button>
+            <button type="button" data-valor="reposo" aria-pressed="false">En reposo</button>
+            <button type="button" data-valor="esperando" aria-pressed="false">Espera tu decisión</button>
+            <button type="button" data-valor="terminado" aria-pressed="false">Terminó</button>
+            <button type="button" data-valor="error" aria-pressed="false">Error</button>
+            <button type="button" data-valor="dormido" aria-pressed="false">Dormido</button>
+          </div>
+          <p class="cuerpo-s elenco-nota" data-nota-animo aria-live="polite">El anillo blanco late y cada rol hace su gesto.</p>
+        </div>
+        <ul class="elenco-lista">
+          <li class="rv"><span class="agentito jefe" data-rol="lider" data-animo="trabajando" aria-hidden="true"><span class="ag-orbita"><i></i><i></i><i></i></span><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Líder</h3><p class="cuerpo-s">Coordina a los workers de una tarea: reparte, junta y decide.</p><p class="micro">Una órbita con un punto por worker.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="planificador" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Planificador</h3><p class="cuerpo-s">Descompone y planea, sin tocar código.</p><p class="micro">La única silueta cuadrada.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="codigo" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Código</h3><p class="cuerpo-s">Escribe y arregla código en su rama.</p><p class="micro">Sus ojos son una etiqueta: &lt; &gt;.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="revision" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Revisión</h3><p class="cuerpo-s">Revisa PR y diffs.</p><p class="micro">Entrecierra un ojo y lee despacio.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="verificador" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Verificador</h3><p class="cuerpo-s">Corre pruebas y da el visto bueno.</p><p class="micro">Un ojo es una mira; el otro guiña.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="investigacion" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Investigación</h3><p class="cuerpo-s">Busca y compara fuentes.</p><p class="micro">Un ojo grande, como visto con lupa.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="render" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Render</h3><p class="cuerpo-s">Renders, video y edición.</p><p class="micro">Un solo ojo panorámico.</p></div></li>
+          
+          <li class="rv"><span class="agentito" data-rol="infra" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Infra</h3><p class="cuerpo-s">Servidores, mudanzas y despliegues.</p><p class="micro">Ojos de píxel, como los LED de un servidor.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="diseno" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Diseño</h3><p class="cuerpo-s">Interfaz, marca y vistas previas.</p><p class="micro">Un ojo redondo y uno cuadrado.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="datos" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Datos</h3><p class="cuerpo-s">Tablas, análisis y migraciones.</p><p class="micro">Dos barras de una gráfica.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="redactor" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">Redactor</h3><p class="cuerpo-s">Textos, guiones y contenido.</p><p class="micro">Ojos de comillas.</p></div></li>
+          <li class="rv"><span class="agentito" data-rol="general" data-animo="trabajando" aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span><div><h3 class="titulo-3">General</h3><p class="cuerpo-s">Sin rol fijo: toma lo que haga falta.</p><p class="micro">Dos ojos ovalados: la base de todos.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="tramo" id="funciones" aria-labelledby="t-funciones">
+    <div class="cont">
+      <header class="tramo-cab rv">
+        <p class="sobre"><span class="nodo" aria-hidden="true"><span class="agentito t24" data-rol="codigo" data-animo="reposo" data-chico aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span></span><span class="dato">Cinco piezas que puedes tocar</span></p>
+        <h2 class="display-2" id="t-funciones">Lo que rodea al pizarrón.</h2>
+      </header>
+
+      <div class="demos">
+        <article class="demo d-bus rv" aria-labelledby="t-bus">
+          <div class="demo-texto">
+            <h3 class="titulo-2" id="t-bus">Se hablan por un bus.</h3>
+            <p class="cuerpo-s">Cada worker trae cuatro herramientas para hablar con sus vecinos del pizarrón. Solo alcanza a quien tú le conectaste.</p>
+          </div>
+          <div class="marco" data-bus>
+            <div class="marco-cab"><span class="dato">Worker «Código» · bus del pizarrón</span></div>
+            <div class="bus">
+              <div class="bus-lista" role="group" aria-label="Herramientas del bus">
+                <button type="button" class="codigo" data-herramienta="vecinos" aria-pressed="true">vecinos()</button>
+                <button type="button" class="codigo" data-herramienta="enviar" aria-pressed="false">enviar(a, mensaje)</button>
+                <button type="button" class="codigo" data-herramienta="salida" aria-pressed="false">leer_salida(nodo)</button>
+                <button type="button" class="codigo" data-herramienta="buzon" aria-pressed="false">leer_buzon()</button>
+              </div>
+              <div class="bus-salida">
+                <p class="cuerpo-s" data-bus-que>Muestra con quién estás conectado y si puedes escribirle.</p>
+                <pre class="codigo" data-bus-salida tabindex="0" aria-label="Resultado de ejemplo">vecinos()
+
+[
+  { "id": "lider", "estado": "activa" },
+  { "id": "revision", "estado": "activa" }
+]</pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo d-boveda rv" aria-labelledby="t-boveda">
+          <div class="demo-texto">
+            <h3 class="titulo-2" id="t-boveda">Las llaves no pasan por el chat.</h3>
+            <p class="cuerpo-s">Los secretos viven cifrados en la Bóveda, cada uno con su alcance. Un worker los usa dentro de un comando; si un valor aparece en un mensaje, sale enmascarado.</p>
+          </div>
+          <div class="marco" data-boveda>
+            <div class="marco-cab"><span class="dato">Bóveda · ejemplo</span><span class="fin"><svg class="ico t3" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 7V5a4 4 0 0 1 8 0v2M3.5 7h9a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z"/></svg></span></div>
+            <ul class="secretos">
+              <li><span class="codigo">repo-ejemplo</span><span class="micro">global</span><span class="codigo t3" aria-label="valor oculto">••••••••</span></li>
+              <li><span class="codigo">stripe-prueba</span><span class="micro">proyecto Tienda</span><span class="codigo t3" aria-label="valor oculto">••••••••</span></li>
+              <li><span class="codigo">correo-envios</span><span class="micro">Tienda y Boletín</span><span class="codigo t3" aria-label="valor oculto">••••••••</span></li>
+            </ul>
+            <p class="orden codigo"><span class="t3" aria-hidden="true">$ </span>git push <span class="t3">· el worker usa</span> ••••[repo-ejemplo]</p>
+            <div class="redactar" data-redactar role="group" aria-label="Mensaje de ejemplo">
+              <label class="micro" for="msj-boveda">Escribe un mensaje con la clave de ejemplo <code>sk_ejemplo_4242</code></label>
+              <div class="redactar-fila">
+                <input id="msj-boveda" type="text" autocomplete="off" maxlength="90" value="La clave de prueba es sk_ejemplo_4242">
+                <button type="button" class="btn m" data-envia>Mandar</button>
+              </div>
+              <p class="redactado cuerpo-s" data-redactado aria-live="polite"><span class="micro">Así llega al chat</span><span data-texto>La clave de prueba es ••••[stripe-prueba]</span></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo d-tareas rv" aria-labelledby="t-tareas">
+          <div class="demo-texto">
+            <h3 class="titulo-2" id="t-tareas">Cada pedido es una rama.</h3>
+            <p class="cuerpo-s">Las tareas se leen como un <code>git log --graph</code>: una línea por pedido y sus movimientos como commits. El punto dice quién la tiene.</p>
+          </div>
+          <div class="marco tareas" data-tareas data-filtro="toca">
+            <div class="marco-cab">
+              <div class="pestanas" role="group" aria-label="Filtro de tareas" data-elige="filtro" data-en="[data-tareas]">
+                <button type="button" data-valor="toca" aria-pressed="true">Te toca <span class="cuenta" data-cuenta="toca">2</span></button>
+                <button type="button" data-valor="marcha" aria-pressed="false">En marcha <span class="cuenta" data-cuenta="marcha">3</span></button>
+                <button type="button" data-valor="todo" aria-pressed="false">Todo <span class="cuenta" data-cuenta="todo">6</span></button>
+              </div>
+            </div>
+            <ul class="ramas">
+              <li data-espera="toca">
+                <button type="button" class="rama" aria-expanded="true"><span class="punto aviso" aria-hidden="true"></span><span class="rama-t">Aprobar la landing nueva</span><span class="rama-q" data-quien>te toca · decidir</span><span class="rama-h dato">5 min</span></button>
+                <div class="rama-detalle">
+                  <ol class="commits"><li>Pedido</li><li>Se lanzó a Diseño</li><li>Diseño publicó el artefacto v3</li><li class="ahora">Ahora te toca</li></ol>
+                  <div class="respuestas" data-respuestas><button type="button" class="btn m" data-cierra>Aprobar</button><button type="button" class="btn fantasma m" data-devuelve>Pedir cambios</button></div>
+                </div>
+              </li>
+              <li data-espera="toca">
+                <button type="button" class="rama" aria-expanded="false"><span class="punto aviso" aria-hidden="true"></span><span class="rama-t">Elegir el dominio</span><span class="rama-q" data-quien>te toca · decidir</span><span class="rama-h dato">2 h</span></button>
+                <div class="rama-detalle">
+                  <ol class="commits"><li>Pedido</li><li>Investigación comparó tres opciones</li><li class="ahora">Ahora te toca</li></ol>
+                  <div class="respuestas" data-respuestas><button type="button" class="btn m" data-cierra>Ya lo hice</button></div>
+                </div>
+              </li>
+              <li data-espera="marcha">
+                <button type="button" class="rama" aria-expanded="false"><span class="punto" aria-hidden="true"></span><span class="rama-t">Arreglar el checkout en móvil</span><span class="rama-q">la lleva Código</span><span class="rama-h dato">12 min</span></button>
+                <div class="rama-detalle"><ol class="commits"><li>Pedido</li><li>Se lanzó a Código</li><li class="ahora">Avance: la prueba ya falla donde debe</li></ol></div>
+              </li>
+              <li data-espera="marcha">
+                <button type="button" class="rama" aria-expanded="false"><span class="punto" aria-hidden="true"></span><span class="rama-t">Escribir el correo de bienvenida</span><span class="rama-q">la lleva Redactor</span><span class="rama-h dato">40 min</span></button>
+                <div class="rama-detalle"><ol class="commits"><li>Pedido</li><li class="ahora">Se lanzó a Redactor</li></ol></div>
+              </li>
+              <li data-espera="marcha">
+                <button type="button" class="rama" aria-expanded="false"><span class="punto hueco" aria-hidden="true"></span><span class="rama-t">Dar de alta el comercio</span><span class="rama-q">espera a un tercero</span><span class="rama-h dato">1 d</span></button>
+                <div class="rama-detalle"><ol class="commits"><li>Pedido</li><li class="ahora">Espera la respuesta del banco</li></ol></div>
+              </li>
+              <li data-espera="lista">
+                <button type="button" class="rama" aria-expanded="false"><span class="punto hecho" aria-hidden="true"></span><span class="rama-t">Migrar el catálogo</span><span class="rama-q">lista</span><span class="rama-h dato">ayer</span></button>
+                <div class="rama-detalle"><ol class="commits"><li>Pedido</li><li>Se lanzó a Datos</li><li class="ahora">Hecha</li></ol></div>
+              </li>
+            </ul>
+            <p class="vacio cuerpo-s" data-vacio hidden><span class="agentito t24" data-rol="general" data-animo="terminado" data-chico aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span>Nada te espera.</p>
+          </div>
+        </article>
+
+        <article class="demo d-artefactos rv" aria-labelledby="t-artefactos">
+          <div class="demo-texto">
+            <h3 class="titulo-2" id="t-artefactos">El resultado se abre, no se describe.</h3>
+            <p class="cuerpo-s">Un worker publica su trabajo como artefacto: una página que vive en el pizarrón y guarda cada versión.</p>
+          </div>
+          <div class="marco artefacto" data-artefacto data-version="3">
+            <div class="marco-cab">
+              <span class="dato">landing.html</span>
+              <div class="fin pestanas" role="group" aria-label="Versión del artefacto" data-elige="version" data-en="[data-artefacto]">
+                <button type="button" data-valor="1" aria-pressed="false">v1</button>
+                <button type="button" data-valor="2" aria-pressed="false">v2</button>
+                <button type="button" data-valor="3" aria-pressed="true">v3</button>
+              </div>
+            </div>
+            <div class="pagina" aria-hidden="true">
+              <div class="pg-barra"><i></i><i></i><i></i></div>
+              <div class="pg-titulo"><i></i><i></i></div>
+              <div class="pg-boton"></div>
+              <div class="pg-foto"></div>
+              <div class="pg-tres"><i></i><i></i><i></i></div>
+            </div>
+            <p class="cuerpo-s artefacto-nota" data-nota-version aria-live="polite">v3 · Revisión pidió tres columnas y Diseño las añadió.</p>
+          </div>
+        </article>
+
+        <article class="demo d-cambios rv" aria-labelledby="t-cambios">
+          <div class="demo-texto">
+            <h3 class="titulo-2" id="t-cambios">Cada worker en su rama, y tú ves el diff.</h3>
+            <p class="cuerpo-s">Con rama propia, un worker nace en su worktree de git: dos en el mismo repositorio no se pisan. Al terminar cada turno queda un punto de control al que puedes volver.</p>
+          </div>
+          <div class="marco cambios" data-cambios data-modo="sin-commit">
+            <div class="marco-cab">
+              <span class="dato"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9M5 9c0-2.5 6-1 6-4.5"/><circle cx="5" cy="3" r="1.5"/><circle cx="5" cy="13" r="1.5"/><circle cx="11" cy="3.5" r="1.5"/></svg>oasis/codigo</span>
+              <div class="fin pestanas" role="group" aria-label="Qué cambios ver" data-elige="modo" data-en="[data-cambios]">
+                <button type="button" data-valor="sin-commit" aria-pressed="true">Sin commit</button>
+                <button type="button" data-valor="base" aria-pressed="false">Contra la base</button>
+                <button type="button" data-valor="turno" aria-pressed="false">Último turno</button>
+              </div>
+            </div>
+            <div class="diff">
+              <ul class="diff-archivos" aria-label="Archivos cambiados">
+                <li data-en="sin-commit base turno"><span class="codigo">carrito.ts</span><span class="dato"><b class="mas">+4</b> <b class="menos">−2</b></span></li>
+                <li data-en="base turno"><span class="codigo">pago.ts</span><span class="dato"><b class="mas">+9</b> <b class="menos">−1</b></span></li>
+                <li data-en="base"><span class="codigo">pago.test.ts</span><span class="dato"><b class="mas">+14</b> <b class="menos">−0</b></span></li>
+              </ul>
+              <pre class="diff-lineas codigo" tabindex="0" aria-label="Diff de carrito.ts"><span class="ctx"> export function total(carrito: Carrito) {</span>
+<span class="menos">− return carrito.items.reduce((s, i) =&gt; s + i.precio, 0);</span>
+<span class="mas">+ const suma = carrito.items.reduce((s, i) =&gt; s + i.precio * i.cantidad, 0);</span>
+<span class="mas">+ return redondear(suma);</span>
+<span class="ctx"> }</span>
+<span class="solo-base ctx"> </span>
+<span class="solo-base mas">+ export const redondear = (n: number) =&gt; Math.round(n * 100) / 100;</span></pre>
+            </div>
+            <p class="cuerpo-s cambios-nota" data-nota-modo aria-live="polite">Lo que el worker tiene sin commit, con los archivos nuevos.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="tramo" id="donde" aria-labelledby="t-donde">
+    <div class="cont">
+      <header class="tramo-cab rv">
+        <p class="sobre"><span class="nodo" aria-hidden="true"><span class="agentito t24" data-rol="infra" data-animo="reposo" data-chico aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span></span><span class="dato">Sin nube de por medio</span></p>
+        <h2 class="display-2" id="t-donde">Corre en tus máquinas.</h2>
+      </header>
+      <dl class="hechos rv">
+        <div><dt class="titulo-3">Tu computadora</dt><dd class="cuerpo">OASIS se instala en tu equipo. El pizarrón, la configuración y el historial del bus viven en una carpeta tuya.</dd></div>
+        <div><dt class="titulo-3">Tus cuentas</dt><dd class="cuerpo">Cada worker es una sesión real de Claude Code, Codex, Gemini u OpenCode con la cuenta que tú elijas. Se asigna por proyecto.</dd></div>
+        <div><dt class="titulo-3">Tus servidores</dt><dd class="cuerpo">Un worker puede nacer en tu laptop o en un servidor tuyo, por SSH. A un servidor nunca se va en silencio: tú lo eliges.</dd></div>
+        <div><dt class="titulo-3">Tu voz</dt><dd class="cuerpo">El dictado se transcribe en la propia máquina y el texto queda en la barra para que lo revises antes de mandarlo.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="cierre" aria-labelledby="t-cierre">
+    <div class="cont">
+      <div class="tramo-cab rv">
+        <p class="sobre"><span class="nodo" aria-hidden="true"><span class="agentito t24" data-rol="general" data-animo="terminado" data-chico aria-hidden="true"><span class="ag-orbe"></span><span class="ag-anillo"></span><span class="ag-cara"><span class="ag-mirada"><span class="ag-ojo"><i class="ag-parpado"></i></span><span class="ag-ojo"><i class="ag-parpado"></i></span></span></span></span></span><span class="etiqueta">Muy pronto</span></p>
+        <h2 class="display-2" id="t-cierre">Tú diriges.</h2>
+        <p class="entrada">OASIS es la primera herramienta de DaVincci. Todavía no está abierta al público.</p>
+        <div class="botones"><a class="btn primario l" href="https://davincci.tech/">Conocer DaVincci</a></div>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer class="pie">
+  <div class="cont">
+    <div class="pie-marca">
+      <a href="https://davincci.tech/" aria-label="DaVincci"><img src="comun/marca/lockup-color-oscuro.svg" alt="DaVincci" width="97" height="28" loading="lazy"></a>
+      <span class="cuerpo-s">Desarrollo de tecnología</span>
+    </div>
+    <nav class="pie-familia" aria-label="La familia DaVincci">
+      <a href="https://davincci.tech/">DaVincci</a>
+      <span>Academy</span>
+      <a href="#contenido" aria-current="page">OASIS</a>
+      <a href="https://motion.davincci.tech/">Motion</a>
+      <span>Proyecto Da Vinci</span>
+    </nav>
+    <div class="pie-legal">
+      <p class="micro">Claude Code, Codex, Gemini, OpenCode, GitHub y git son marcas de sus dueños. DaVincci no está afiliado a ellos ni cuenta con su patrocinio.</p>
+      <p class="micro">© 2026 DaVincci</p>
+    </div>
+  </div>
+</footer>
+
+<script src="comun/agentitos.js" defer></script>
+<script src="comun/base.js" defer></script>
+<script src="oasis.js" defer></script>
 </body>
 </html>
